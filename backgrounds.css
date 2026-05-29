@@ -1,0 +1,107 @@
+/* backgrounds.css */
+/* Background Themes */
+.bg-theme-grid {
+    background-color: #121414;
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-attachment: fixed;
+}
+
+.bg-theme-dots {
+    background-color: #0A0B0C;
+}
+
+.bg-theme-dots::before {
+    content: '';
+    position: fixed;
+    top: -50px; left: -50px; right: -50px; bottom: -50px; /* Oversized to allow smooth panning without showing edges */
+    z-index: -2;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    background-size: 18px 18px;
+    animation: pan-dots-smooth 8s linear infinite;
+    filter: url(#wave-distortion);
+    will-change: transform, filter;
+    pointer-events: none;
+}
+
+@keyframes pan-dots-smooth {
+    from { transform: translateY(0px); }
+    to { transform: translateY(18px); }
+}
+
+/* Scroll-Reactive Halos */
+.scroll-reactive-environment {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.halo {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    will-change: transform;
+}
+
+.halo-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: halo-breathe 10s ease-in-out infinite alternate;
+}
+
+.halo-top {
+    top: -10%;
+    left: 10%;
+    width: 600px;
+    height: 600px;
+    transform: translateY(calc(var(--scroll-offset, 0) * -0.15px));
+}
+.halo-top .halo-inner {
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, transparent 70%);
+}
+
+.halo-mid {
+    top: 40%;
+    right: -10%;
+    width: 800px;
+    height: 800px;
+    transform: translateY(calc(var(--scroll-offset, 0) * -0.25px));
+}
+.halo-mid .halo-inner {
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.06) 0%, transparent 70%);
+    animation-delay: -3s;
+}
+
+.halo-bottom {
+    top: 80%;
+    left: 20%;
+    width: 700px;
+    height: 700px;
+    transform: translateY(calc(var(--scroll-offset, 0) * -0.4px));
+}
+.halo-bottom .halo-inner {
+    background: radial-gradient(circle, rgba(160, 120, 255, 0.07) 0%, transparent 70%);
+    animation-delay: -7s;
+}
+
+@keyframes halo-breathe {
+    0% { opacity: 0.4; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
+
+
+/* Accessibility & Performance Safety */
+@media (prefers-reduced-motion: reduce) {
+    .bg-theme-dots::before {
+        animation: none !important;
+        filter: none !important;
+    }
+}

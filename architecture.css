@@ -1,0 +1,371 @@
+/* architecture.css */
+/* --- Rebuilt Architecture Map Styles --- */
+.architecture-map {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.process-canvas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #e2e2e2;
+}
+
+.process-lines-svg {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.process-line {
+    fill: none;
+    stroke: rgba(226, 226, 226, 0.22);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 9;
+    animation: dash-forward 3s linear infinite;
+}
+
+.process-line.active {
+    stroke: rgba(226, 226, 226, 0.34);
+}
+
+.process-line.return {
+    stroke: rgba(226, 226, 226, 0.18);
+    animation: dash-return 3s linear infinite;
+}
+
+.desktop-flow-pulse {
+    fill: #00fbfb;
+    opacity: 0.78;
+    filter: drop-shadow(0 0 6px rgba(0, 251, 251, 0.75));
+    pointer-events: none;
+}
+
+.desktop-flow-pulse.muted {
+    fill: rgba(226, 226, 226, 0.72);
+    opacity: 0.58;
+    filter: drop-shadow(0 0 5px rgba(226, 226, 226, 0.32));
+}
+
+.flow-label {
+    fill: rgba(226, 226, 226, 0.56);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-anchor: middle;
+}
+
+.svg-text-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-anchor: middle;
+}
+
+.svg-text-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    text-anchor: middle;
+    fill: #ffffff;
+}
+
+.svg-text-sup {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    fill: #00fbfb;
+}
+
+.thinking-status {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 14px);
+    opacity: 0;
+    transform: translate(-50%, 6px);
+    transition: all 280ms ease;
+    white-space: nowrap;
+    z-index: 5;
+    color: #00fbfb;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+}
+
+.is-thinking .thinking-status {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.waveform-mini {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    height: 100%;
+    width: 100%;
+}
+
+.wave-bar-mini {
+    width: 3px;
+    border-radius: 999px;
+    background: #a078ff;
+    animation: wave 1s ease-in-out infinite alternate;
+}
+
+.wave-bar-mini:nth-child(1) { height: 38%; animation-delay: 0s; }
+.wave-bar-mini:nth-child(2) { height: 64%; animation-delay: 0.1s; }
+.wave-bar-mini:nth-child(3) { height: 100%; animation-delay: 0.2s; }
+.wave-bar-mini:nth-child(4) { height: 48%; animation-delay: 0.3s; }
+.wave-bar-mini:nth-child(5) { height: 78%; animation-delay: 0.4s; }
+
+@keyframes wave {
+    0% { transform: scaleY(0.55); opacity: 0.55; }
+    100% { transform: scaleY(1); opacity: 1; box-shadow: 0 0 10px rgba(160, 120, 255, 0.72); }
+}
+
+@keyframes dash-forward { to { stroke-dashoffset: -84; } }
+@keyframes dash-return { to { stroke-dashoffset: 84; } }
+
+.thinking-moon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 13px;
+    height: 13px;
+    border-radius: 999px;
+    background: #00fbfb;
+    box-shadow: 0 0 12px rgba(0, 251, 251, 0.9), 0 0 28px rgba(0, 251, 251, 0.45);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    z-index: 20;
+}
+
+.thinking-moon.detaching { animation: moon-detach 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 1; }
+.thinking-moon.orbiting { animation: moon-orbit 1s linear var(--thinking-cycles, 1); opacity: 1; }
+.thinking-moon.merging { animation: moon-merge 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 1; }
+
+@keyframes moon-detach {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    100% { transform: translate(-50%, -50%) rotate(0deg) translateX(104px) rotate(0deg) scale(1); }
+}
+@keyframes moon-orbit {
+    0% { transform: translate(-50%, -50%) rotate(0deg) translateX(104px) rotate(0deg) scale(1); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) translateX(104px) rotate(-360deg) scale(1); }
+}
+@keyframes moon-merge {
+    0% { transform: translate(-50%, -50%) rotate(0deg) translateX(104px) rotate(0deg) scale(1); }
+    100% { transform: translate(-50%, -50%) scale(0); }
+}
+
+.mobile-architecture-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+}
+
+.mobile-map-line {
+    fill: none;
+    stroke: rgba(226, 226, 226, 0.25);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 5 7;
+}
+
+.mobile-map-line.active {
+    stroke: rgba(226, 226, 226, 0.36);
+}
+
+.mobile-map-line {
+    animation: mobile-dash-flow 2.8s linear infinite;
+}
+
+.mobile-map-line.return {
+    animation: mobile-dash-return 2.8s linear infinite;
+}
+
+.mobile-flow-pulse {
+    fill: #00fbfb;
+    opacity: 0.82;
+    filter: drop-shadow(0 0 5px rgba(0, 251, 251, 0.78));
+}
+
+.mobile-flow-pulse.muted {
+    fill: rgba(226, 226, 226, 0.72);
+    opacity: 0.62;
+    filter: drop-shadow(0 0 4px rgba(226, 226, 226, 0.34));
+}
+
+.mobile-node-core {
+    animation: mobile-node-breathe 3.6s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.mobile-node-core.primary {
+    animation-duration: 4.6s;
+}
+
+@keyframes mobile-dash-flow {
+    to { stroke-dashoffset: -72; }
+}
+
+@keyframes mobile-dash-return {
+    to { stroke-dashoffset: 72; }
+}
+
+@keyframes mobile-node-breathe {
+    0%, 100% { opacity: 0.92; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.035); }
+}
+
+.mobile-map-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    fill: rgba(226, 226, 226, 0.50);
+    text-anchor: middle;
+}
+
+.mobile-node-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    fill: #ffffff;
+    text-anchor: middle;
+}
+
+.mobile-node-kicker-svg {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px;
+    letter-spacing: 0.1em;
+    fill: #00fbfb;
+    text-anchor: middle;
+}
+
+.mobile-primary-copy {
+    font-family: 'JetBrains Mono', monospace;
+    fill: #ffffff;
+    text-anchor: middle;
+}
+
+.mobile-primary-copy.kicker {
+    font-size: 7px;
+    letter-spacing: 0.1em;
+    fill: #00fbfb;
+}
+
+.mobile-primary-copy.title {
+    font-size: 12px;
+}
+
+.mobile-primary-copy.desc {
+    font-size: 8px;
+    fill: rgba(255,255,255,0.58);
+}
+
+@media (max-width: 767px) {
+    .architecture-map {
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: auto !important;
+        overflow: visible !important;
+        padding: 28px 18px 34px !important;
+    }
+
+    .process-canvas {
+        height: auto !important;
+        width: 100%;
+        display: block;
+    }
+
+    .orb-shell {
+        width: 132px;
+        height: 132px;
+    }
+
+    .mobile-flow {
+        width: 100%;
+        min-height: max-content;
+        padding-block: 18px 28px;
+        overflow: visible;
+    }
+
+    .mobile-flow-step {
+        position: relative;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 8px;
+    }
+
+    .mobile-flow-step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: calc(100% - 2px);
+        width: 1px;
+        height: 34px;
+        background: linear-gradient(to bottom, rgba(226, 226, 226, 0.34), rgba(226, 226, 226, 0.08));
+        transform: translateX(-50%);
+    }
+
+    .mobile-node-orb {
+        width: 72px;
+        height: 72px;
+        border-radius: 999px;
+        border: 1px solid rgba(226,226,226,0.16);
+        background:
+            radial-gradient(circle at 38% 30%, rgba(255,255,255,0.16), transparent 22%),
+            radial-gradient(circle at 42% 48%, rgba(0, 251, 251, 0.20), transparent 42%),
+            radial-gradient(circle at 64% 60%, rgba(160, 120, 255, 0.18), transparent 48%),
+            radial-gradient(circle at 50% 50%, rgba(26, 30, 32, 0.94), rgba(9, 11, 12, 0.98) 78%);
+        box-shadow: inset 0 0 22px rgba(255,255,255,0.05), 0 14px 32px rgba(0,0,0,0.28);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .mobile-node-orb.asr::before,
+    .mobile-node-orb.asr::after,
+    .mobile-node-orb.tts::before,
+    .mobile-node-orb.tts::after {
+        content: "";
+        position: absolute;
+        inset: 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(226,226,226,0.18);
+    }
+
+    .mobile-node-orb.asr::after {
+        inset: 28px;
+        background: rgba(160,120,255,0.44);
+        border-color: rgba(160,120,255,0.36);
+        box-shadow: 0 0 18px rgba(160,120,255,0.32);
+    }
+
+    .mobile-node-orb.tts::after {
+        inset: 30px;
+        background: rgba(226,226,226,0.34);
+        border-color: rgba(226,226,226,0.20);
+    }
+
+    .mobile-flow-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 15px;
+        line-height: 1.35;
+        color: #ffffff;
+    }
+
+    .mobile-flow-kicker {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        color: #00fbfb;
+    }
+}

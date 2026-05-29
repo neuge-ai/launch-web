@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark overflow-x-hidden" lang="en"><head>
+<script>
+if (localStorage.theme === 'light') {
+    document.documentElement.style.backgroundColor = '#ffffff';
+    document.documentElement.classList.remove('dark');
+} else {
+    document.documentElement.style.backgroundColor = '#050505';
+    document.documentElement.classList.add('dark');
+}
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neuge | The Future has a Voice</title>
+<link rel="icon" type="image/png" href="logos/logo-white-inky.png"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="tailwind-config.js"></script>
+<link rel="stylesheet" href="global.css">
+<link rel="stylesheet" href="backgrounds.css">
+<script src="scroll-effects.js" defer></script>
+</head>
+<body class="text-on-background font-body-md antialiased overflow-x-hidden relative min-h-screen bg-background bg-theme-dots">
+<!-- Invisible SVG for Sea Wave Distortion -->
+<svg style="width: 0; height: 0; position: absolute;" aria-hidden="true">
+    <filter id="wave-distortion">
+        <feTurbulence type="fractalNoise" baseFrequency="0.005 0.005" numOctaves="1" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" id="displacement-map" />
+    </filter>
+</svg>
+
+<!-- Unified Global Background Glow (Fixed to follow across all sections) -->
+<div class="scroll-reactive-environment">
+    <div class="halo halo-top"><div class="halo-inner"></div></div>
+    <div class="halo halo-mid"><div class="halo-inner"></div></div>
+    <div class="halo halo-bottom"><div class="halo-inner"></div></div>
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30">
+<div class="w-full max-w-container-max mx-auto flex items-center justify-between px-gutter py-4">
+<div class="flex items-center gap-8">
+<a class="font-headline-lg text-[20px] font-bold text-white hover:text-primary transition-colors" href="index.html">Neuge</a>
+<div class="hidden md:flex gap-6">
+<a class="font-label-sm text-[14px] text-white/90 hover:text-white transition-colors duration-300" href="how-it-works.html">How It Works</a>
+</div>
+</div>
+<div>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full font-label-sm text-[14px] font-medium bg-white text-black hover:bg-white/90 hover:scale-95 active:scale-90 transition-all" href="download.html">
+    <span class="hidden sm:inline">Download</span> <span class="material-symbols-outlined text-[16px] text-black/70">arrow_outward</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col justify-center pt-24 pb-20 z-10" id="hero-section">
+<div class="w-full max-w-container-max mx-auto px-gutter relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 transition-all duration-700">
+<div class="w-full lg:w-1/2 flex justify-center items-center relative" id="hero-orb-container">
+<div class="orb-shell orb-theme-home w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px]">
+<div class="orb-base"></div>
+<div class="orb-swirl-1"></div>
+<div class="orb-swirl-2"></div>
+<div class="orb-glass"></div>
+</div>
+<!-- Interactive Cursor Glow -->
+<div class="absolute w-[400px] h-[400px] bg-primary/20 rounded-[50%] blur-[100px] pointer-events-none transition-transform duration-300 ease-out mix-blend-screen opacity-0" id="mouse-glow" style="opacity: 0; transform: translate(515px, -49px);"></div>
+</div>
+<div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-500 relative z-10">
+<h1 class="font-headline-xl text-headline-xl font-bold text-white mb-6 drop-shadow-2xl hero-title-anim-mobile md:hero-title-anim">
+                The Future has a <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Voice.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-background max-w-2xl lg:max-w-xl mb-12 reveal delay-100 font-light tracking-tight active">
+                A voice agent that combines frictionless dialogue with active background research, staying fast, deeply contextual, and constantly aware of time.
+            </p>
+<div class="flex flex-col sm:flex-row items-center gap-3 reveal delay-200 active">
+<button class="btn-solid-dark flex items-center gap-3 px-4 py-2.5 rounded-full font-label-sm text-label-sm text-white transition-all duration-300">
+<span class="material-symbols-outlined text-white/70" style="font-size: 16px; font-variation-settings: 'FILL' 1;">download</span>
+                Get Started
+            </button>
+<a href="#intelligence" class="btn-gradient-voice flex items-center gap-3 px-4 py-2.5 rounded-full font-label-sm text-label-sm text-white transition-all duration-300">
+<span class="material-symbols-outlined text-white/70" style="font-size: 16px; font-variation-settings: 'FILL' 1;">play_arrow</span>
+                See Live Action
+            </a>
+</div>
+</div>
+</div>
+<div class="absolute bottom-8 flex flex-col items-center gap-2 text-white/50 animate-bounce reveal delay-300 z-10 active inset-x-0 mx-auto w-fit">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Scroll to Explore</span>
+<span class="material-symbols-outlined text-[20px]">arrow_downward</span>
+</div>
+</section>
+<!-- Product in Action Zone --><section class="relative py-12 md:py-20 max-w-container-max mx-auto px-gutter z-10" id="intelligence">
+    <!-- Marketing Header (Outside the cards) -->
+    <div class="text-center mb-12 reveal">
+        <h2 class="font-headline-lg-mobile md:font-headline-lg font-medium text-white mb-6">
+            Product in Action
+        </h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto font-light tracking-tight">
+            Real voice interaction with context, tools, and enough reasoning to challenge impossible claims.
+        </p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 reveal delay-100">
+        
+        <!-- Left Card (Controls & Orb) -->
+        <div class="glass-panel xl:col-span-7 rounded-2xl flex flex-col border border-white/20 shadow-[0_30px_60px_rgba(0,0,0,0.8)] overflow-hidden h-[540px]">
+            <!-- Header / Toolbar -->
+            <div class="flex flex-col sm:flex-row items-center justify-between border-b border-white/10 p-6 bg-white/[0.02]">
+                <div class="flex items-center gap-4">
+                    <button class="scenario-nav-btn hover:text-white text-white/50 transition-colors" id="scenario-prev" aria-label="Previous example">
+                        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    </button>
+                    <button class="scenario-nav-btn hover:text-white text-white/50 transition-colors" id="scenario-next" aria-label="Next example">
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </button>
+                </div>
+                
+                <!-- Instructional Text (Moved from Marketing Header) -->
+                <div class="hidden sm:block flex-grow text-center px-4">
+                    <span class="font-label-sm text-label-sm text-white/35 tracking-[0.08em]">Click the orb to replay the action.</span>
+                </div>
+                
+                <div class="text-center sm:text-right mt-4 sm:mt-0">
+                    <div class="font-label-sm text-label-sm text-white/70 tracking-[0.12em] uppercase" id="scenario-kicker">Example 01</div>
+                    <div class="font-body-md text-body-md text-white mt-1" id="scenario-title">Reasoning Check</div>
+                </div>
+            </div>
+            
+            <!-- Dots Indicator -->
+            <div class="flex justify-center gap-2 mt-6" aria-hidden="true">
+                <span class="scenario-dot active"></span>
+                <span class="scenario-dot"></span>
+                <span class="scenario-dot"></span>
+            </div>
+
+            <!-- Orb Stage -->
+            <div class="flex-grow flex justify-center items-center relative demo-orb-stage py-8">
+                <button class="demo-orb demo-orb-listening cursor-pointer focus:outline-none" id="product-demo-orb" aria-label="Replay product demo animation" title="Replay animation">
+                    <div class="demo-orb-core"></div>
+                </button>
+                <div class="demo-status-pill absolute bottom-6">
+                    <span class="demo-status-dot" id="demo-status-dot"></span>
+                    <span id="demo-status-text">Listening</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Card (Activity Log) -->
+        <div class="glass-panel xl:col-span-5 rounded-2xl flex flex-col border border-white/20 shadow-[0_30px_60px_rgba(0,0,0,0.8)] overflow-hidden h-[540px]">
+            <!-- Feed Header -->
+            <div class="flex items-center justify-between border-b border-white/10 p-6 bg-white/[0.02]">
+                <span class="font-label-sm text-label-sm text-white/50 uppercase tracking-widest">Activity Log</span>
+                <span class="text-white/70 font-label-mono text-xs" id="scenario-counter">01 / 03</span>
+            </div>
+            
+            <!-- Feed Content (Scrollable) -->
+            <div class="flex-grow overflow-y-auto p-6 space-y-4 scroll-smooth" id="scenario-feed" style="scrollbar-width: none; -ms-overflow-style: none;">
+                <style>
+                    #scenario-feed::-webkit-scrollbar { display: none; }
+                </style>
+                <!-- Messages injected here -->
+            </div>
+        </div>
+        
+    </div>
+</section>
+<!-- Download CTA Zone -->
+<section class="relative z-10 w-full max-w-container-max mx-auto px-gutter mt-8 mb-20">
+<div class="bg-[#0A0A0A] border border-white/20 rounded-2xl p-8 text-center relative flex flex-col items-center justify-center overflow-hidden">
+<div class="neuge-blob"></div>
+<div class="relative z-10 max-w-2xl">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-white mb-6">Built for conversations that feel natural and intelligent.</h2>
+<p class="font-body-md text-body-md text-white/58 mb-8">Install the local app and let the real-time voice loop run directly in your environment.</p>
+<a href="download.html" class="btn-solid-dark inline-flex items-center gap-3 px-4 py-2.5 rounded-full font-label-sm text-label-sm text-white transition-all duration-300">
+<span class="material-symbols-outlined text-white/70" style="font-size: 16px; font-variation-settings: 'FILL' 1;">download</span>
+                    Download Neuge
+                </a>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-grid-unit px-gutter flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto border-t border-white/20 bg-transparent z-10 relative">
+<div class="text-[22px] font-bold text-white/90 tracking-tight mb-4 md:mb-0">
+    Neuge
+</div>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-tertiary-fixed-variant hover:text-primary transition-all opacity-80 hover:opacity-100" href="coming-soon.html">Docs</a>
+<a class="font-label-sm text-label-sm text-on-tertiary-fixed-variant hover:text-primary transition-all opacity-80 hover:opacity-100" target="_blank" rel="noopener noreferrer" href="https://github.com/neuge-ai/neuge-voice">License</a>
+</div>
+</footer>
+<!-- Interaction Logic -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Scroll Reveal Logic
+        const reveals = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        reveals.forEach(reveal => {
+            revealOnScroll.observe(reveal);
+        });
+
+        // Kinetic Hero Mouse Glow
+        const heroSection = document.getElementById('hero-section');
+        const mouseGlow = document.getElementById('mouse-glow');
+        
+        if (heroSection && mouseGlow) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const x = e.clientX - rect.left - 200; // 200 is half glow width
+                const y = e.clientY - rect.top - 200;
+                
+                mouseGlow.style.transform = `translate(${x}px, ${y}px)`;
+                mouseGlow.style.opacity = '1';
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                mouseGlow.style.opacity = '0';
+            });
+        }
+
+        // Product Demo Scenario Carousel + Orb State Animation
+        const scenarios = [
+            {
+                kicker: "Example 01",
+                title: "Reasoning Check",
+                messages: [
+                    { speaker: "User", time: "14:02:00", text: "I'm going for a run.", side: "user", state: "user-speaking", status: "User speaking" },
+                    { speaker: "Neuge", time: "14:02:05", text: "Got it. I’ve started tracking your run.", side: "agent", state: "agent-speaking", status: "Agent speaking" },
+                    { speaker: "User", time: "14:02:35", text: "I just finished my 15-mile run.", side: "user", state: "user-speaking", status: "User speaking" },
+                    { speaker: "Neuge", time: "14:02:40", text: "Are you sure? You started about 35 seconds ago, so 15 miles would be impossible. Should I keep tracking this run instead?", side: "agent", state: "agent-speaking", status: "Agent speaking" }
+                ]
+            },
+            {
+                kicker: "Example 02",
+                title: "Background Task",
+                messages: [
+                    { speaker: "User", time: "18:10:00", text: "Can you compare the weekly temperature trend of this week against last year at Bangalore?", side: "user", state: "user-speaking", status: "User speaking" },
+                    { speaker: "Neuge", time: "18:10:04", text: "I'll run that research in the background and let you know when I have the comparison.", side: "agent", state: "agent-speaking", status: "Agent speaking" },
+                    { speaker: "Neuge", time: "18:13:20", text: "Bangalore this week is around 28 to 32 C for highs and 21 to 24 C for lows. Same week last year was hotter overall, up to 34.4 C, with lows down to about 19.9 C, and it was also wetter and more unsettled.", side: "agent", state: "agent-speaking", status: "Agent speaking" },
+                    { speaker: "User", time: "18:13:25", text: "Got it, thanks.", side: "user", state: "user-speaking", status: "User speaking" }
+                ]
+            },
+            {
+                kicker: "Example 03",
+                title: "Persistent Tracking",
+                messages: [
+                    { speaker: "User", time: "07:30:00", text: "Start tracking my run.", side: "user", state: "user-speaking", status: "User speaking" },
+                    { speaker: "Neuge", time: "07:30:03", text: "Run started. I'm tracking your time in the background.", side: "agent", state: "agent-speaking", status: "Agent speaking" },
+                    { speaker: "User", time: "07:45:00", text: "I'm finished. I just completed 3 kilometers.", side: "user", state: "user-speaking", status: "User speaking" },
+                    { speaker: "Neuge", time: "07:45:04", text: "Run logged. You finished 3 kilometers in exactly 15 minutes. That's a solid 5-minute per kilometer pace. Great job!", side: "agent", state: "agent-speaking", status: "Agent speaking" }
+                ]
+            }
+        ];
+
+        const scenarioFeed = document.getElementById('scenario-feed');
+        const scenarioTitle = document.getElementById('scenario-title');
+        const scenarioKicker = document.getElementById('scenario-kicker');
+        const scenarioCounter = document.getElementById('scenario-counter');
+        const scenarioPrev = document.getElementById('scenario-prev');
+        const scenarioNext = document.getElementById('scenario-next');
+        const scenarioDots = document.querySelectorAll('.scenario-dot');
+        const demoOrb = document.getElementById('product-demo-orb');
+        const demoStatusText = document.getElementById('demo-status-text');
+
+        let scenarioIndex = 0;
+        let messageTimers = [];
+
+        function setDemoOrbState(state, status) {
+            if (!demoOrb) return;
+            demoOrb.classList.remove('demo-orb-listening', 'demo-orb-user-speaking', 'demo-orb-thinking', 'demo-orb-agent-speaking');
+            demoOrb.classList.add(`demo-orb-${state}`);
+            if (demoStatusText) demoStatusText.textContent = status || 'Listening';
+        }
+
+        function buildMessage(message) {
+            const wrapper = document.createElement('div');
+            const userClass = 'bg-[#1A1C1D] border border-white/20 rounded-[12px] p-4 self-end ml-auto max-w-[90%]';
+            const agentClass = 'bg-[#121414] border border-white/20 rounded-[12px] p-4 self-start mr-auto max-w-[90%]';
+            wrapper.className = `demo-feed-message ${message.side === 'user' ? userClass : agentClass}`;
+            wrapper.innerHTML = `
+                <div class="flex justify-between items-center mb-2 gap-4">
+                    <span class="${message.side === 'user' ? 'text-gray-500 dark:text-white/50' : 'text-primary-container dark:text-primary/70'} font-label-sm text-label-sm">${message.speaker}</span>
+                    <span class="text-gray-400 dark:text-white/30 text-[10px]">${message.time}</span>
+                </div>
+                <div class="${message.side === 'user' ? 'text-gray-900 dark:text-white' : 'text-on-primary-container dark:text-primary-fixed'} text-[14px] leading-relaxed font-light">"${message.text}"</div>
+            `;
+            return wrapper;
+        }
+
+        function renderScenario(index) {
+            messageTimers.forEach(clearTimeout);
+            messageTimers = [];
+
+            const scenario = scenarios[index];
+            scenarioTitle.textContent = scenario.title;
+            scenarioKicker.textContent = scenario.kicker;
+            scenarioCounter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(scenarios.length).padStart(2, '0')}`;
+            scenarioDots.forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === index));
+
+            scenarioFeed.innerHTML = '';
+            setDemoOrbState('listening', 'Listening');
+
+            scenario.messages.forEach((message, messageIndex) => {
+                const timer = setTimeout(() => {
+                    setDemoOrbState(message.state, message.status);
+                    const node = buildMessage(message);
+                    scenarioFeed.appendChild(node);
+                    requestAnimationFrame(() => {
+                        node.classList.add('visible');
+                        scenarioFeed.scrollTop = scenarioFeed.scrollHeight;
+                    });
+
+                    const thinkingTimer = setTimeout(() => {
+                        if (messageIndex < scenario.messages.length - 1) {
+                            setDemoOrbState('thinking', 'Thinking');
+                        } else {
+                            setDemoOrbState('listening', 'Listening');
+                        }
+                    }, 1150);
+                    messageTimers.push(thinkingTimer);
+                }, messageIndex * 1900);
+                messageTimers.push(timer);
+            });
+        }
+
+        if (scenarioPrev && scenarioNext) {
+            scenarioPrev.addEventListener('click', () => {
+                scenarioIndex = (scenarioIndex - 1 + scenarios.length) % scenarios.length;
+                renderScenario(scenarioIndex);
+            });
+
+            scenarioNext.addEventListener('click', () => {
+                scenarioIndex = (scenarioIndex + 1) % scenarios.length;
+                renderScenario(scenarioIndex);
+            });
+
+            if (demoOrb) {
+                demoOrb.addEventListener('click', () => {
+                    renderScenario(scenarioIndex);
+                });
+            }
+
+            renderScenario(scenarioIndex);
+        }
+    });
+</script>
+<script src="wave-effect.js"></script>
+</body></html>

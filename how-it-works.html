@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="dark overflow-x-hidden" lang="en"><head>
+<script>
+if (localStorage.theme === 'light') {
+    document.documentElement.style.backgroundColor = '#ffffff';
+    document.documentElement.classList.remove('dark');
+} else {
+    document.documentElement.style.backgroundColor = '#050505';
+    document.documentElement.classList.add('dark');
+}
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neuge | How It Works</title>
+<link rel="icon" type="image/png" href="logos/logo-white-inky.png"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="tailwind-config.js"></script>
+<link rel="stylesheet" href="global.css">
+<link rel="stylesheet" href="architecture.css">
+<link rel="stylesheet" href="backgrounds.css">
+<script src="scroll-effects.js" defer></script>
+</head>
+<body class="text-on-background font-body-md antialiased overflow-x-hidden relative min-h-screen bg-background bg-theme-dots">
+<!-- Invisible SVG for Sea Wave Distortion -->
+<svg style="width: 0; height: 0; position: absolute;" aria-hidden="true">
+    <filter id="wave-distortion">
+        <feTurbulence type="fractalNoise" baseFrequency="0.005 0.005" numOctaves="1" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" id="displacement-map" />
+    </filter>
+</svg>
+
+<div class="scroll-reactive-environment">
+    <div class="halo halo-top"><div class="halo-inner"></div></div>
+    <div class="halo halo-mid"><div class="halo-inner"></div></div>
+    <div class="halo halo-bottom"><div class="halo-inner"></div></div>
+</div>
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30">
+<div class="w-full max-w-container-max mx-auto flex items-center justify-between px-gutter py-4">
+<div class="flex items-center gap-8">
+<a class="font-headline-lg text-[20px] font-bold text-white hover:text-primary transition-colors" href="index.html">Neuge</a>
+<div class="hidden md:flex gap-6">
+<a class="font-label-sm text-[14px] text-white/90 hover:text-white transition-colors duration-300" href="how-it-works.html">How It Works</a>
+</div>
+</div>
+<div>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full font-label-sm text-[14px] font-medium bg-white text-black hover:bg-white/90 hover:scale-95 active:scale-90 transition-all" href="download.html">
+    <span class="hidden sm:inline">Download</span> <span class="material-symbols-outlined text-[16px] text-black/70">arrow_outward</span>
+</a>
+</div>
+</div>
+</nav>
+<main class="relative z-10 w-full max-w-container-max mx-auto px-gutter pt-[128px] md:pt-[160px] pb-section-gap-mobile md:pb-section-gap-desktop">
+<header class="text-center flex flex-col items-center mb-20 md:mb-28">
+<h1 class="hero-heading font-display-xl-mobile md:font-display-xl text-[30px] md:text-display-xl leading-tight font-bold text-white mb-6 drop-shadow-2xl hero-title-anim max-w-[320px] md:max-w-none">
+            How NextGen<br class="md:hidden"/> Voice Works
+        </h1>
+<p class="hero-subcopy font-body-lg text-[17px] md:text-body-lg text-on-surface-variant max-w-[330px] md:max-w-3xl mb-14 font-light reveal delay-100 active">
+            A real-time voice system built around interruption-aware listening, a background researcher and a fast interaction model that makes the conversation feel smooth.
+        </p>
+<!-- Rebuilt Architecture Map Section -->
+<section aria-label="Neuge architecture diagram" class="relative architecture-map glass-panel rounded-xl border border-white/20 w-full p-4 md:p-8 reveal delay-200 active md:h-[620px]" id="architecture-map">
+<p class="absolute top-4 md:top-6 left-0 right-0 text-center font-label-sm text-white/40 z-10 pointer-events-none">Check FAQ section for more details</p>
+<div class="process-canvas hidden md:block">
+<svg class="process-lines-svg" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="flow-arrow" markerHeight="8" markerWidth="10" orient="auto" refX="9" refY="4">
+<path d="M 0 0 L 10 4 L 0 8 z" fill="rgba(226, 226, 226, 0.34)"></path>
+</marker>
+<marker id="flow-arrow-muted" markerHeight="8" markerWidth="10" orient="auto" refX="9" refY="4">
+<path d="M 0 0 L 10 4 L 0 8 z" fill="rgba(226, 226, 226, 0.24)"></path>
+</marker>
+<radialGradient id="premium-node" cx="36%" cy="28%" r="76%">
+<stop offset="0%" stop-color="rgba(255,255,255,0.22)"></stop>
+<stop offset="38%" stop-color="rgba(105,115,122,0.36)"></stop>
+<stop offset="100%" stop-color="rgba(9,11,12,0.96)"></stop>
+</radialGradient>
+<radialGradient id="premium-node-cyan" cx="35%" cy="30%" r="78%">
+<stop offset="0%" stop-color="rgba(180,255,255,0.26)"></stop>
+<stop offset="42%" stop-color="rgba(0,251,251,0.13)"></stop>
+<stop offset="100%" stop-color="rgba(9,11,12,0.96)"></stop>
+</radialGradient>
+<radialGradient id="premium-node-violet" cx="36%" cy="30%" r="78%">
+<stop offset="0%" stop-color="rgba(235,225,255,0.22)"></stop>
+<stop offset="44%" stop-color="rgba(160,120,255,0.18)"></stop>
+<stop offset="100%" stop-color="rgba(9,11,12,0.96)"></stop>
+</radialGradient>
+<filter id="soft-node-shadow" x="-60%" y="-60%" width="220%" height="220%">
+<feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="rgba(0,0,0,0.48)"></feDropShadow>
+<feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="rgba(255,255,255,0.055)"></feDropShadow>
+</filter>
+</defs>
+
+<!--
+    Polished target geometry:
+    arrows attach to node edges only. Labels are outside routing space.
+    User -> Smart ASR -> Primary Brain, with researcher loop and TTS response rail.
+-->
+
+<!-- Main speech rail -->
+<path id="d-speech" class="process-line active" d="M 120 310 H 258" marker-end="url(#flow-arrow)"></path>
+<text class="flow-label" x="189" y="292">SPEECH</text>
+<path id="d-asr-output" class="process-line active" d="M 342 310 H 485" marker-end="url(#flow-arrow)"></path>
+<text class="flow-label" x="414" y="292">ASR OUTPUT</text>
+
+<!-- Research loop, ports land on the primary orb perimeter -->
+<path id="d-research-task" class="process-line" d="M 532 228 V 170 H 835" marker-end="url(#flow-arrow-muted)"></path>
+<text class="flow-label" x="700" y="151">RESEARCH TASK</text>
+<path id="d-research-result" class="process-line return" d="M 840 194 H 558 V 218" marker-end="url(#flow-arrow-muted)"></path>
+<text class="flow-label" x="692" y="213">RESEARCH RESULT</text>
+
+<!-- Speech generation to TTS -->
+<path id="d-generate-speech" class="process-line" d="M 580 405 V 510 H 342" marker-end="url(#flow-arrow-muted)"></path>
+<text class="flow-label" x="515" y="493">GENERATE SPEECH</text>
+
+<!-- TTS response rail back to user -->
+<path id="d-response" class="process-line return" d="M 258 510 H 85 V 345" marker-end="url(#flow-arrow-muted)"></path>
+<text class="flow-label" x="67" y="430" transform="rotate(-90 67 430)">RESPONSE</text>
+
+<!-- Desktop flow pulses, matched to the mobile moving-dot information flow. -->
+<circle r="3" class="desktop-flow-pulse">
+<animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#d-speech"></mpath></animateMotion>
+</circle>
+<circle r="3" class="desktop-flow-pulse">
+<animateMotion dur="2.35s" repeatCount="indefinite" begin="0.3s"><mpath href="#d-asr-output"></mpath></animateMotion>
+</circle>
+<circle r="2.7" class="desktop-flow-pulse muted">
+<animateMotion dur="3s" repeatCount="indefinite" begin="0.15s"><mpath href="#d-research-task"></mpath></animateMotion>
+</circle>
+<circle r="2.7" class="desktop-flow-pulse muted">
+<animateMotion dur="3.1s" repeatCount="indefinite" begin="0.7s"><mpath href="#d-research-result"></mpath></animateMotion>
+</circle>
+<circle r="2.7" class="desktop-flow-pulse muted">
+<animateMotion dur="3s" repeatCount="indefinite" begin="0.35s"><mpath href="#d-generate-speech"></mpath></animateMotion>
+</circle>
+<circle r="2.7" class="desktop-flow-pulse muted">
+<animateMotion dur="3.25s" repeatCount="indefinite" begin="0.9s"><mpath href="#d-response"></mpath></animateMotion>
+</circle>
+
+<!-- User Node, premium abstract visual instead of literal icon -->
+<circle cx="85" cy="310" r="35" fill="url(#premium-node-cyan)" stroke="rgba(226, 226, 226, 0.18)" filter="url(#soft-node-shadow)"></circle>
+<circle cx="85" cy="310" r="21" fill="none" stroke="rgba(0,251,251,0.22)" stroke-width="1"></circle>
+<circle cx="77" cy="302" r="3.2" fill="rgba(0,251,251,0.78)"></circle>
+<circle cx="94" cy="318" r="2.6" fill="rgba(226,226,226,0.54)"></circle>
+<path d="M 75 322 Q 85 330 96 322" fill="none" stroke="rgba(0,251,251,0.34)" stroke-width="1.2" stroke-linecap="round"></path>
+<text class="svg-text-title" style="font-size:16px;" x="85" y="256">User</text>
+
+<!-- Smart ASR Node, abstract filtering visual without a literal music icon -->
+<circle cx="300" cy="310" r="42" fill="url(#premium-node-violet)" stroke="rgba(226, 226, 226, 0.18)" filter="url(#soft-node-shadow)"></circle>
+<circle cx="300" cy="310" r="27" fill="none" stroke="rgba(160,120,255,0.22)" stroke-width="1"></circle>
+<circle cx="300" cy="310" r="17" fill="none" stroke="rgba(160,120,255,0.30)" stroke-width="1"></circle>
+<circle cx="300" cy="310" r="6" fill="rgba(160,120,255,0.52)"></circle>
+<path d="M 278 310 H 292 M 308 310 H 322" stroke="rgba(226,226,226,0.24)" stroke-width="1.2" stroke-linecap="round"></path>
+<path d="M 300 288 V 302 M 300 318 V 332" stroke="rgba(226,226,226,0.18)" stroke-width="1.2" stroke-linecap="round"></path>
+<text class="svg-text-title" style="font-size:16px;" x="300" y="248">Smart ASR<tspan class="svg-text-sup" dy="-5">1</tspan></text>
+
+<!-- Primary Brain Orb, padded foreignObject prevents breathing animation clipping -->
+<foreignObject height="240" width="240" x="460" y="190">
+<div class="w-full h-full relative" style="overflow:visible;" xmlns="http://www.w3.org/1999/xhtml">
+<div class="orb-shell orb-theme-svg w-[190px] h-[190px]" style="position:absolute; left:25px; top:25px; margin:0;">
+<div class="orb-base"></div>
+<div class="orb-swirl-1"></div>
+<div class="orb-swirl-2"></div>
+<div class="orb-glass"></div>
+<div aria-hidden="true" class="thinking-moon"></div>
+</div>
+</div>
+</foreignObject>
+<text class="svg-text-title" style="font-size:16px;" fill="#ffffff" x="580" y="318">Thinking...</text>
+
+<!-- Primary Brain explanatory copy, forced start anchor so it cannot overlap the orb -->
+<text class="svg-text-label" fill="#e9ddff" style="text-anchor:start;" x="718" y="326">PRIMARY BRAIN<tspan class="svg-text-sup" dy="-5">2</tspan></text>
+<text class="svg-text-title" style="font-size:18px; text-anchor:start;" x="718" y="352">Context loop every 200ms</text>
+<text class="svg-text-label" fill="rgba(255,255,255,0.58)" style="font-size:13px; text-transform:none; letter-spacing:0; text-anchor:start;" x="718" y="376">Routes the next move without blocking conversation.</text>
+
+<!-- Background Researcher Node -->
+<circle cx="890" cy="170" r="55" fill="url(#premium-node)" stroke="rgba(226, 226, 226, 0.18)" filter="url(#soft-node-shadow)"></circle>
+<circle cx="872" cy="152" r="5" fill="rgba(226,226,226,0.50)"></circle>
+<circle cx="906" cy="187" r="5" fill="rgba(226,226,226,0.50)"></circle>
+<path d="M 875 154 C 802 162 802 186 901 187" fill="none" stroke="rgba(226,226,226,0.12)" stroke-width="1"></path>
+<text class="svg-text-title" style="font-size:16px;" x="890" y="98">Background Researcher<tspan class="svg-text-sup" dy="-5">3</tspan></text>
+
+<!-- Streaming TTS Node, premium abstract visual instead of arrow icon -->
+<circle cx="300" cy="510" r="42" fill="url(#premium-node)" stroke="rgba(226, 226, 226, 0.18)" filter="url(#soft-node-shadow)"></circle>
+<circle cx="300" cy="510" r="26" fill="none" stroke="rgba(226,226,226,0.13)" stroke-width="1"></circle>
+<path d="M 289 510 C 294 501 306 501 311 510" fill="none" stroke="rgba(226,226,226,0.38)" stroke-width="1.6" stroke-linecap="round"></path>
+<path d="M 286 522 C 295 534 312 529 315 516" fill="none" stroke="rgba(226,226,226,0.28)" stroke-width="1.4" stroke-linecap="round"></path>
+<circle cx="300" cy="510" r="3.2" fill="rgba(226,226,226,0.45)"></circle>
+<text class="svg-text-title" style="font-size:16px;" x="300" y="602">Streaming TTS<tspan class="svg-text-sup" dy="-5">4</tspan></text>
+</svg>
+</div>
+<!-- Mobile Architecture Map: vertical topology, redesigned for compact screens -->
+<div class="md:hidden w-full py-4">
+<svg class="mobile-architecture-svg" viewBox="0 0 360 540" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="Compact vertical Neuge architecture diagram">
+<defs>
+<marker id="mobile-flow-arrow" markerHeight="7" markerWidth="9" orient="auto" refX="8" refY="3.5">
+<path d="M 0 0 L 9 3.5 L 0 7 z" fill="rgba(226, 226, 226, 0.34)"></path>
+</marker>
+<marker id="mobile-flow-arrow-muted" markerHeight="7" markerWidth="9" orient="auto" refX="8" refY="3.5">
+<path d="M 0 0 L 9 3.5 L 0 7 z" fill="rgba(226, 226, 226, 0.24)"></path>
+</marker>
+<radialGradient id="mobile-node-cyan" cx="35%" cy="30%" r="78%">
+<stop offset="0%" stop-color="rgba(180,255,255,0.26)"></stop>
+<stop offset="42%" stop-color="rgba(0,251,251,0.13)"></stop>
+<stop offset="100%" stop-color="rgba(9,11,12,0.96)"></stop>
+</radialGradient>
+<radialGradient id="mobile-node-violet" cx="36%" cy="30%" r="78%">
+<stop offset="0%" stop-color="rgba(235,225,255,0.22)"></stop>
+<stop offset="44%" stop-color="rgba(160,120,255,0.18)"></stop>
+<stop offset="100%" stop-color="rgba(9,11,12,0.96)"></stop>
+</radialGradient>
+<radialGradient id="mobile-node-brain" cx="35%" cy="30%" r="78%">
+<stop offset="0%" stop-color="rgba(178,255,255,0.28)"></stop>
+<stop offset="45%" stop-color="rgba(0,251,251,0.13)"></stop>
+<stop offset="72%" stop-color="rgba(160,120,255,0.16)"></stop>
+<stop offset="100%" stop-color="rgba(9,11,12,0.98)"></stop>
+</radialGradient>
+<radialGradient id="mobile-node-gray" cx="36%" cy="28%" r="76%">
+<stop offset="0%" stop-color="rgba(255,255,255,0.22)"></stop>
+<stop offset="38%" stop-color="rgba(105,115,122,0.36)"></stop>
+<stop offset="100%" stop-color="rgba(9,11,12,0.96)"></stop>
+</radialGradient>
+<filter id="mobile-soft-shadow" x="-70%" y="-70%" width="240%" height="240%">
+<feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="rgba(0,0,0,0.48)"></feDropShadow>
+</filter>
+</defs>
+
+<!-- Mobile geometry contract: paths attach to node perimeter ports, not node centers. -->
+<!-- Node centers/radii: User 84,190 r31 | ASR 180,82 r38 | Primary 276,238 r58 | TTS 84,358 r35 | Background 218,444 r48. Generate-speech enters the TTS upper perimeter, not the side. -->
+
+<!-- User -> ASR: exits User top port, enters ASR left port -->
+<path id="m-speech" class="mobile-map-line active" d="M 84 159 V 82 H 142" marker-end="url(#mobile-flow-arrow)"></path>
+<text class="mobile-map-label" x="111" y="73">SPEECH</text>
+
+<!-- ASR -> Primary Brain: exits ASR right port, turns down, and enters Primary Brain from the top port -->
+<path id="m-asr-output" class="mobile-map-line active" d="M 218 82 H 276 V 180" marker-end="url(#mobile-flow-arrow)"></path>
+<text class="mobile-map-label" x="248" y="73">ASR OUTPUT</text>
+
+<!-- Primary Brain -> Streaming TTS: exits Primary left edge, then drops into the upper perimeter of TTS. This keeps the route to one clean elbow and avoids side-entry criss-crossing. -->
+<path id="m-generate-speech" class="mobile-map-line" d="M 218 238 H 104 V 329" marker-end="url(#mobile-flow-arrow-muted)"></path>
+<text class="mobile-map-label" x="156" y="229">GENERATE SPEECH</text>
+
+<!-- Streaming TTS -> User response rail: exits TTS top edge and enters User bottom edge on the same clean vertical rail. -->
+<path id="m-response" class="mobile-map-line return" d="M 84 323 V 221" marker-end="url(#mobile-flow-arrow-muted)"></path>
+<text class="mobile-map-label" x="66" y="273" transform="rotate(-90 66 273)">RESPONSE</text>
+
+<!-- Primary Brain -> Background Researcher: exits Primary bottom edge, drops cleanly, then enters Researcher right edge. -->
+<path id="m-research-task" class="mobile-map-line" d="M 276 296 V 444 H 266" marker-end="url(#mobile-flow-arrow-muted)"></path>
+<text class="mobile-map-label" x="293" y="366" transform="rotate(90 293 366)">RESEARCH TASK</text>
+
+<!-- Background Researcher -> Primary Brain: exits Researcher upper-left, rises on its own lane, then enters Primary Brain lower-left edge. -->
+<path id="m-research-result" class="mobile-map-line return" d="M 188 406 V 270 H 220" marker-end="url(#mobile-flow-arrow-muted)"></path>
+<text class="mobile-map-label" x="171" y="338" transform="rotate(-90 171 338)">RESULT</text>
+
+<!-- Flow pulses. These make mobile feel like the desktop pulsing flow rather than a static sketch. -->
+<circle r="2.2" class="mobile-flow-pulse">
+<animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#m-speech"></mpath></animateMotion>
+</circle>
+<circle r="2.2" class="mobile-flow-pulse">
+<animateMotion dur="2.6s" repeatCount="indefinite" begin="0.35s"><mpath href="#m-asr-output"></mpath></animateMotion>
+</circle>
+<circle r="2" class="mobile-flow-pulse muted">
+<animateMotion dur="3s" repeatCount="indefinite" begin="0.2s"><mpath href="#m-generate-speech"></mpath></animateMotion>
+</circle>
+<circle r="2" class="mobile-flow-pulse muted">
+<animateMotion dur="3.2s" repeatCount="indefinite" begin="0.6s"><mpath href="#m-response"></mpath></animateMotion>
+</circle>
+<circle r="2" class="mobile-flow-pulse muted">
+<animateMotion dur="3s" repeatCount="indefinite" begin="0.4s"><mpath href="#m-research-task"></mpath></animateMotion>
+</circle>
+<circle r="2" class="mobile-flow-pulse muted">
+<animateMotion dur="3.2s" repeatCount="indefinite" begin="1s"><mpath href="#m-research-result"></mpath></animateMotion>
+</circle>
+
+<!-- User node, title inside -->
+<g class="mobile-node-core">
+<circle cx="84" cy="190" r="31" fill="url(#mobile-node-cyan)" stroke="rgba(226, 226, 226, 0.18)" filter="url(#mobile-soft-shadow)"></circle>
+<circle cx="84" cy="190" r="18" fill="none" stroke="rgba(0,251,251,0.18)"></circle>
+<circle cx="76" cy="181" r="2.2" fill="rgba(0,251,251,0.78)"></circle>
+</g>
+<text class="mobile-node-title" x="84" y="194">User</text>
+
+<!-- Smart ASR node, title inside -->
+<g class="mobile-node-core">
+<circle cx="180" cy="82" r="38" fill="url(#mobile-node-violet)" stroke="rgba(226, 226, 226, 0.18)" filter="url(#mobile-soft-shadow)"></circle>
+<circle cx="180" cy="82" r="23" fill="none" stroke="rgba(160,120,255,0.22)"></circle>
+<circle cx="180" cy="82" r="4" fill="rgba(160,120,255,0.46)"></circle>
+</g>
+<text class="mobile-node-title" x="180" y="79">Smart</text>
+<text class="mobile-node-title" x="180" y="94">ASR<tspan fill="#00fbfb" font-size="7" dy="-4">1</tspan></text>
+
+<!-- Primary Brain node, title inside, no 200ms copy on mobile -->
+<g class="mobile-node-core primary">
+<circle cx="276" cy="238" r="58" fill="url(#mobile-node-brain)" stroke="rgba(226, 226, 226, 0.18)" filter="url(#mobile-soft-shadow)"></circle>
+<circle cx="276" cy="238" r="40" fill="none" stroke="rgba(0,251,251,0.08)"></circle>
+</g>
+<text class="mobile-node-title" x="276" y="232">Primary</text>
+<text class="mobile-node-title" x="276" y="249">Brain<tspan fill="#00fbfb" font-size="7" dy="-4">2</tspan></text>
+
+<!-- Streaming TTS node, title inside -->
+<g class="mobile-node-core">
+<circle cx="84" cy="358" r="35" fill="url(#mobile-node-gray)" stroke="rgba(226, 226, 226, 0.18)" filter="url(#mobile-soft-shadow)"></circle>
+<circle cx="84" cy="358" r="21" fill="none" stroke="rgba(226,226,226,0.13)"></circle>
+<path d="M 73 358 C 78 350 90 350 95 358" fill="none" stroke="rgba(226,226,226,0.34)" stroke-width="1.2" stroke-linecap="round"></path>
+</g>
+<text class="mobile-node-title" x="84" y="355">Streaming</text>
+<text class="mobile-node-title" x="84" y="370">TTS<tspan fill="#00fbfb" font-size="7" dy="-4">4</tspan></text>
+
+<!-- Background Researcher node, title inside -->
+<g class="mobile-node-core">
+<circle cx="218" cy="444" r="48" fill="url(#mobile-node-gray)" stroke="rgba(226, 226, 226, 0.18)" filter="url(#mobile-soft-shadow)"></circle>
+<circle cx="203" cy="429" r="3.2" fill="rgba(226,226,226,0.50)"></circle>
+<circle cx="233" cy="459" r="3.2" fill="rgba(226,226,226,0.50)"></circle>
+<path d="M 204 430 C 174 440 188 463 232 459" fill="none" stroke="rgba(226,226,226,0.10)" stroke-width="1"></path>
+</g>
+<text class="mobile-node-title" x="218" y="437">Background</text>
+<text class="mobile-node-title" x="218" y="452">Researcher<tspan fill="#00fbfb" font-size="7" dy="-4">3</tspan></text>
+</svg>
+</div>
+</section>
+</header>
+<!-- Technical Breakdown Section -->
+<section class="mb-20 md:mb-28" id="technical-breakdown">
+<div class="flex items-center gap-4 mb-10 reveal active">
+<h2 class="font-headline-lg-mobile md:font-headline-lg font-medium text-white">Technical FAQ</h2>
+<div class="flex-grow h-px bg-white/10"></div>
+</div>
+<div class="grid gap-4 max-w-4xl mx-auto">
+<details class="glass-panel rounded-xl border border-white/10 group overflow-hidden reveal active" open="">
+<summary class="flex justify-between items-center gap-4 p-6 cursor-pointer hover:bg-white/5 transition-colors">
+<div class="flex items-start gap-4 text-left">
+<span class="font-label-mono text-label-sm text-primary pt-1">01</span>
+<div>
+<span class="font-feature-title text-feature-title text-white group-open:text-primary transition-colors">Smart ASR<sup class="text-secondary text-[11px] ml-1">1</sup></span>
+<p class="font-body-md text-[13px] md:text-body-md text-white/52 mt-1">What does Smart ASR filter before the request reaches the brain?</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-white/50 group-open:rotate-180 transition-transform">keyboard_arrow_down</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-body-md text-white/68 font-light border-t border-white/20 mt-2 bg-black/20">
+<p>Our Smart ASR acts as an intelligent gatekeeper to keep the interaction model focused and efficient. It actively filters out "garbage" transcripts like random background noise, static, or tiny, meaningless character fragments that sometimes get falsely transcribed when you aren't actually speaking. It also performs smart echo rejection to ignore accidental microphone loop-backs. Only when it verifies that the audio contains genuine, intentional user speech does it forward the request to the primary brain for processing.</p>
+</div>
+</details>
+<details class="glass-panel rounded-xl border border-white/10 group overflow-hidden reveal delay-100 active">
+<summary class="flex justify-between items-center gap-4 p-6 cursor-pointer hover:bg-white/5 transition-colors">
+<div class="flex items-start gap-4 text-left">
+<span class="font-label-mono text-label-sm text-secondary pt-1">02</span>
+<div>
+<span class="font-feature-title text-feature-title text-white group-open:text-secondary transition-colors">Primary Brain<sup class="text-secondary text-[11px] ml-1">2</sup></span>
+<p class="font-body-md text-[13px] md:text-body-md text-white/52 mt-1">How does the 200ms context loop decide the next action?</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-white/50 group-open:rotate-180 transition-transform">keyboard_arrow_down</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-body-md text-white/68 font-light border-t border-white/20 mt-2 bg-black/20">
+<p>The orchestrator runs a high-speed control loop every 200 milliseconds that constantly monitors the entire state of your session. It evaluates whether you are still speaking, tracks the elapsed time of active timers, and checks the status of asynchronous background tasks. During every 200ms tick, it uses this information to decide exactly what to do next, including when to pass your request to the interaction model (Small Language Model) for processing.</p>
+</div>
+</details>
+<details class="glass-panel rounded-xl border border-white/10 group overflow-hidden reveal delay-200 active">
+<summary class="flex justify-between items-center gap-4 p-6 cursor-pointer hover:bg-white/5 transition-colors">
+<div class="flex items-start gap-4 text-left">
+<span class="font-label-mono text-label-sm text-primary pt-1">03</span>
+<div>
+<span class="font-feature-title text-feature-title text-white group-open:text-primary transition-colors">Background Researcher<sup class="text-secondary text-[11px] ml-1">3</sup></span>
+<p class="font-body-md text-[13px] md:text-body-md text-white/52 mt-1">When does the system delegate work to the background researcher?</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-white/50 group-open:rotate-180 transition-transform">keyboard_arrow_down</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-body-md text-white/68 font-light border-t border-white/20 mt-2 bg-black/20">
+<p>To maintain ultra-low latency, the interaction model handles basic chat, timer management, and activity tracking on its own. However, if a request requires heavy lifting like searching the web, connecting to MCP tools, or writing code to analyze data, it delegates the task to the background. This spins up the "Background Researcher" (e.g., Codex agent) to perform the complex, open-ended work asynchronously, allowing the main voice loop to remain fully responsive to you in the meantime.</p>
+</div>
+</details>
+<details class="glass-panel rounded-xl border border-white/10 group overflow-hidden reveal delay-300 active">
+<summary class="flex justify-between items-center gap-4 p-6 cursor-pointer hover:bg-white/5 transition-colors">
+<div class="flex items-start gap-4 text-left">
+<span class="font-label-mono text-label-sm text-secondary pt-1">04</span>
+<div>
+<span class="font-feature-title text-feature-title text-white group-open:text-secondary transition-colors">Streaming TTS<sup class="text-secondary text-[11px] ml-1">4</sup></span>
+<p class="font-body-md text-[13px] md:text-body-md text-white/52 mt-1">Which Text-to-Speech (TTS) providers are supported?</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-white/50 group-open:rotate-180 transition-transform">keyboard_arrow_down</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-body-md text-white/68 font-light border-t border-white/20 mt-2 bg-black/20">
+<p>The app provides fully configurable options for your Text-to-Speech output. You can easily plug in your preferred API provider based on your specific needs for latency and voice quality. Out of the box, we support providers like NVIDIA NIM, ElevenLabs, Sarvam, etc.</p>
+</div>
+</details>
+</div>
+</section>
+<!-- Call to Action Section -->
+<section class="relative z-10">
+<div class="bg-[#0A0A0A] border border-white/20 rounded-2xl p-8 text-center relative reveal flex flex-col items-center justify-center overflow-hidden active">
+<div class="neuge-blob"></div>
+<div class="relative z-10 max-w-2xl">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-white mb-6">Built for conversations that feel natural and intelligent.</h2>
+<p class="font-body-md text-body-md text-white/58 mb-8">Install the local app and let the real-time voice loop run directly in your environment.</p>
+<a class="btn-solid-dark inline-flex items-center gap-3 px-4 py-2.5 rounded-full font-label-sm text-label-sm text-white transition-all duration-300" href="download.html">
+<span class="material-symbols-outlined text-white/70" style="font-size: 16px; font-variation-settings: 'FILL' 1;">download</span>
+                    Download Neuge
+                </a>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full py-grid-unit px-gutter flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto border-t border-white/20 bg-transparent z-10 relative">
+    <div class="text-[22px] font-bold text-white/90 tracking-tight mb-4 md:mb-0">
+        Neuge
+    </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-sm text-label-sm text-on-tertiary-fixed-variant hover:text-primary transition-all opacity-80 hover:opacity-100" href="coming-soon.html">Docs</a>
+<a class="font-label-sm text-label-sm text-on-tertiary-fixed-variant hover:text-primary transition-all opacity-80 hover:opacity-100" target="_blank" rel="noopener noreferrer" href="https://github.com/neuge-ai/neuge-voice">License</a>
+</div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Animation reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+
+        const revealOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        reveals.forEach(reveal => {
+            const rect = reveal.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.92) {
+                reveal.classList.add('active');
+            } else {
+                revealOnScroll.observe(reveal);
+            }
+        });
+
+        // Diagram "Thinking" Animation Controller
+        const architectureMap = document.getElementById('architecture-map');
+        if (architectureMap) {
+            const thinkingMoon = architectureMap.querySelector('.thinking-moon');
+            
+            const runThinkingCycle = () => {
+                const cycles = Math.random() > 0.5 ? 2 : 1;
+                architectureMap.style.setProperty('--thinking-cycles', cycles);
+                architectureMap.classList.add('is-thinking');
+                
+                thinkingMoon?.classList.remove('detaching', 'orbiting', 'merging');
+                void thinkingMoon.offsetWidth; // Force reflow
+                thinkingMoon?.classList.add('detaching');
+
+                window.setTimeout(() => {
+                    thinkingMoon?.classList.remove('detaching');
+                    thinkingMoon?.classList.add('orbiting');
+                }, 240);
+
+                window.setTimeout(() => {
+                    thinkingMoon?.classList.remove('orbiting');
+                    thinkingMoon?.classList.add('merging');
+                }, 240 + cycles * 1000);
+
+                window.setTimeout(() => {
+                    thinkingMoon?.classList.remove('merging');
+                    architectureMap.classList.remove('is-thinking');
+                    // Random delay before next loop
+                    window.setTimeout(runThinkingCycle, 2500 + Math.random() * 3500);
+                }, 520 + cycles * 1000);
+            };
+
+            // Start after header animation
+            window.setTimeout(runThinkingCycle, 1500);
+        }
+    });
+</script>
+<script src="wave-effect.js"></script>
+</body></html>
