@@ -89,33 +89,11 @@ if (localStorage.theme === 'light') {
 <!-- macOS View -->
 <div class="tab-content active" id="macos">
     <h2 class="font-headline-lg text-headline-lg text-white mb-10 text-center tracking-tight">Download Neuge for macOS</h2>
-    
-    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-        <a href="javascript:void(0)" id="download-mac-silicon" class="btn-solid-dark flex items-center justify-center gap-3 px-4 py-2.5 rounded-[12px] font-label-sm text-label-sm text-white w-full sm:w-auto">
-            <span class="material-symbols-outlined text-white/70" style="font-size: 16px;">download</span>
-            Apple Silicon
-        </a>
-        <button class="btn-solid-cyan opacity-50 cursor-not-allowed flex items-center justify-center gap-3 px-4 py-2.5 rounded-[12px] font-label-sm text-label-sm text-white w-full sm:w-auto">
-            <span class="material-symbols-outlined text-white/70" style="font-size: 16px;">hourglass_empty</span>
-            Intel (Coming Soon)
-        </button>
-    </div>
-
-    <div class="border-t border-white/10 pt-10">
-        <h3 class="font-label-sm text-label-sm text-white/50 mb-6 text-center uppercase tracking-[0.1em]">Installation Sequence</h3>
-        <div class="bg-[#050505] p-6 rounded-[12px] border border-white/10">
-            <div class="flex items-start gap-4 mb-4">
-                <span class="font-label-sm text-white/40 mt-1">01</span>
-                <p class="font-code-snippet text-code-snippet text-white/80">Mount the downloaded .dmg volume.</p>
-            </div>
-            <div class="flex items-start gap-4 mb-4">
-                <span class="font-label-sm text-white/40 mt-1">02</span>
-                <p class="font-code-snippet text-code-snippet text-white/80">Drag Neuge.app to Applications.</p>
-            </div>
-            <div class="flex items-start gap-4">
-                <span class="font-label-sm text-white/40 mt-1">03</span>
-                <p class="font-code-snippet text-code-snippet text-white/80">Launch and initialize local models.</p>
-            </div>
+    <div class="flex flex-col items-center justify-center text-center">
+        <div class="bg-[#050505] border border-white/10 rounded-[16px] p-10 max-w-lg w-full flex flex-col items-center shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+            <span class="material-symbols-outlined text-white/30 text-[32px] mb-4">hourglass_empty</span>
+            <h3 class="font-label-sm text-label-sm text-white mb-2 uppercase tracking-widest">In Active Development</h3>
+            <p class="font-body-md text-[14px] text-white/50 leading-relaxed">The macOS app is not currently available. We hope to publish it soon.</p>
         </div>
     </div>
 </div>
@@ -142,10 +120,12 @@ if (localStorage.theme === 'light') {
         </a>
     </div>
     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-        <a href="javascript:void(0)" id="download-linux-deb" class="btn-solid-cyan flex items-center justify-center gap-2 px-6 py-3 rounded-[12px] font-label-sm text-label-sm text-white w-full sm:w-auto">
-            .deb (Debian/Ubuntu)
-        </a>
         <button class="btn-solid-cyan opacity-50 cursor-not-allowed flex items-center justify-center gap-2 px-6 py-3 rounded-[12px] font-label-sm text-label-sm text-white w-full sm:w-auto">
+            <span class="material-symbols-outlined text-white/70" style="font-size: 16px;">hourglass_empty</span>
+            .deb (Coming Soon)
+        </button>
+        <button class="btn-solid-cyan opacity-50 cursor-not-allowed flex items-center justify-center gap-2 px-6 py-3 rounded-[12px] font-label-sm text-label-sm text-white w-full sm:w-auto">
+            <span class="material-symbols-outlined text-white/70" style="font-size: 16px;">hourglass_empty</span>
             ARM64 Build (Coming Soon)
         </button>
     </div>
@@ -153,8 +133,8 @@ if (localStorage.theme === 'light') {
         <h3 class="font-label-sm text-label-sm text-white/50 mb-6 text-center uppercase tracking-[0.1em]">Execution Command</h3>
         <div class="bg-[#050505] p-6 rounded-[12px] border border-white/10 font-code-snippet text-code-snippet text-white/80 overflow-x-auto text-left">
             <p class="text-white/30 mb-2"># AppImage Execution Command</p>
-            <p>chmod +x Neuge-x86_64.AppImage</p>
-            <p>./Neuge-x86_64.AppImage</p>
+            <p>chmod +x "Neuge Voice-&lt;version&gt;.AppImage"</p>
+            <p>./"Neuge Voice-&lt;version&gt;.AppImage" --no-sandbox</p>
         </div>
     </div>
 </div>
@@ -216,13 +196,13 @@ async function fetchLatestRelease() {
         const linuxAppImage = data.assets.find(asset => asset.name.endsWith('.AppImage'));
         const linuxDeb = data.assets.find(asset => asset.name.endsWith('.deb'));
 
-        if (macAsset) {
+        if (macAsset && document.getElementById('download-mac-silicon')) {
             document.getElementById('download-mac-silicon').href = macAsset.browser_download_url;
         }
-        if (linuxAppImage) {
+        if (linuxAppImage && document.getElementById('download-linux-appimage')) {
             document.getElementById('download-linux-appimage').href = linuxAppImage.browser_download_url;
         }
-        if (linuxDeb) {
+        if (linuxDeb && document.getElementById('download-linux-deb')) {
             document.getElementById('download-linux-deb').href = linuxDeb.browser_download_url;
         }
     } catch (error) {
