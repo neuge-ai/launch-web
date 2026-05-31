@@ -90,6 +90,9 @@
 
 .hero-title-anim {
     animation: letterTracking 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: filter, transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 @keyframes letterTracking {
@@ -104,6 +107,9 @@
 
 .hero-title-anim-mobile {
     animation: letterTrackingMobile 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: filter, transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 /* Base Orb structure */

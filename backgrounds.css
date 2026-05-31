@@ -10,7 +10,7 @@
 }
 
 .bg-theme-dots {
-    background-color: #0A0B0C;
+    background-color: transparent !important;
 }
 
 .bg-theme-dots::before {
@@ -18,10 +18,10 @@
     position: fixed;
     top: -50px; left: -50px; right: -50px; bottom: -50px; /* Oversized to allow smooth panning without showing edges */
     z-index: -2;
+    background-color: #0A0B0C;
     background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
     background-size: 18px 18px;
     animation: pan-dots-smooth 8s linear infinite;
-    filter: url(#wave-distortion);
     will-change: transform, filter;
     pointer-events: none;
 }
@@ -104,4 +104,9 @@
         animation: none !important;
         filter: none !important;
     }
+}
+
+html.low-power-mode .bg-theme-dots::before {
+    animation: none !important;
+    filter: none !important;
 }

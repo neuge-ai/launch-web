@@ -24,10 +24,14 @@ if (localStorage.theme === 'light') {
 <link rel="stylesheet" href="architecture.css">
 <link rel="stylesheet" href="backgrounds.css">
 <script src="scroll-effects.js" defer></script>
+<script src="navigation.js" defer></script>
 <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<style>
+    .bg-theme-dots::before { filter: url(#wave-distortion); }
+</style>
 </head>
 <body class="text-on-background font-body-md antialiased overflow-x-hidden relative min-h-screen bg-background bg-theme-dots">
 <!-- Invisible SVG for Sea Wave Distortion -->
@@ -51,16 +55,25 @@ if (localStorage.theme === 'light') {
 <a class="font-label-sm text-[14px] text-white/90 hover:text-white transition-colors duration-300" href="how-it-works.html">How It Works</a>
 </div>
 </div>
-<div>
+<div class="flex items-center gap-3">
 <a class="flex items-center gap-2 px-4 py-2.5 rounded-full font-label-sm text-[14px] font-medium bg-white text-black hover:bg-white/90 hover:scale-95 active:scale-90 transition-all" href="download.html">
     <span class="hidden sm:inline">Download</span> <span class="material-symbols-outlined text-[16px] text-black/70">arrow_outward</span>
 </a>
+<button id="mobile-menu-btn" class="md:hidden flex items-center justify-center p-2 rounded-full text-white hover:text-primary hover:bg-white/5 active:scale-90 transition-all" aria-label="Toggle menu">
+    <span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
 </div>
+</div>
+<!-- Mobile Menu Dropdown -->
+<div id="mobile-menu-overlay" class="absolute top-full left-0 right-0 bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 flex flex-col px-gutter py-8 gap-6 transform origin-top -translate-y-2 opacity-0 pointer-events-none transition-all duration-300 md:hidden -z-10">
+    <a class="font-headline-sm text-[20px] font-medium text-white hover:text-primary transition-colors" href="how-it-works.html">How It Works</a>
+    <a class="font-headline-sm text-[20px] font-medium text-white hover:text-primary transition-colors" href="coming-soon.html">Docs</a>
+    <a class="font-headline-sm text-[20px] font-medium text-white hover:text-primary transition-colors" href="https://github.com/neuge-ai/neuge-voice" target="_blank" rel="noopener noreferrer">License</a>
 </div>
 </nav>
 <main class="relative z-10 w-full max-w-container-max mx-auto px-gutter pt-[128px] md:pt-[160px] pb-section-gap-mobile md:pb-section-gap-desktop">
 <header class="text-center flex flex-col items-center mb-20 md:mb-28">
-<h1 class="hero-heading font-display-xl-mobile md:font-display-xl text-[30px] md:text-display-xl leading-tight font-bold text-white mb-6 drop-shadow-2xl hero-title-anim max-w-[320px] md:max-w-none">
+<h1 class="hero-heading font-display-xl-mobile md:font-display-xl text-[30px] md:text-display-xl leading-tight font-bold text-white mb-6 md:drop-shadow-2xl hero-title-anim max-w-[320px] md:max-w-none">
             How NextGen<br class="md:hidden"/> Voice Works
         </h1>
 <p class="hero-subcopy font-body-lg text-[17px] md:text-body-lg text-on-surface-variant max-w-[330px] md:max-w-3xl mb-14 font-light reveal delay-100 active">

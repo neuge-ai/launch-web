@@ -27,10 +27,14 @@ if (localStorage.theme === 'light') {
 <link rel="stylesheet" href="global.css">
 <link rel="stylesheet" href="backgrounds.css">
 <script src="scroll-effects.js" defer></script>
+<script src="navigation.js" defer></script>
 <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<style>
+    .bg-theme-dots::before { filter: url(#wave-distortion); }
+</style>
 </head>
 <body class="antialiased relative min-h-screen bg-theme-dots text-on-surface">
 <!-- Invisible SVG for Sea Wave Distortion -->
@@ -56,11 +60,20 @@ if (localStorage.theme === 'light') {
 <a class="font-label-sm text-[14px] text-white/90 hover:text-white transition-colors duration-300" href="how-it-works.html">How It Works</a>
 </div>
 </div>
-<div>
+<div class="flex items-center gap-3">
 <a class="flex items-center gap-2 px-4 py-2.5 rounded-full font-label-sm text-[14px] font-medium bg-white text-black hover:bg-white/90 hover:scale-95 active:scale-90 transition-all" href="download.html">
     <span class="hidden sm:inline">Download</span> <span class="material-symbols-outlined text-[16px] text-black/70">arrow_outward</span>
 </a>
+<button id="mobile-menu-btn" class="md:hidden flex items-center justify-center p-2 rounded-full text-white hover:text-primary hover:bg-white/5 active:scale-90 transition-all" aria-label="Toggle menu">
+    <span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
 </div>
+</div>
+<!-- Mobile Menu Dropdown -->
+<div id="mobile-menu-overlay" class="absolute top-full left-0 right-0 bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 flex flex-col px-gutter py-8 gap-6 transform origin-top -translate-y-2 opacity-0 pointer-events-none transition-all duration-300 md:hidden -z-10">
+    <a class="font-headline-sm text-[20px] font-medium text-white hover:text-primary transition-colors" href="how-it-works.html">How It Works</a>
+    <a class="font-headline-sm text-[20px] font-medium text-white hover:text-primary transition-colors" href="coming-soon.html">Docs</a>
+    <a class="font-headline-sm text-[20px] font-medium text-white hover:text-primary transition-colors" href="https://github.com/neuge-ai/neuge-voice" target="_blank" rel="noopener noreferrer">License</a>
 </div>
 </nav>
 <main class="flex-grow flex flex-col items-center justify-start pt-[160px] pb-20 px-gutter z-10 relative">
@@ -176,12 +189,19 @@ if (localStorage.theme === 'light') {
                 });
             });
             
-            // Initialize first tab as active explicitly just in case
-            const initialTab = document.querySelector('.os-tab-btn[data-target="macos"]');
+            // Auto-detect OS to set the default tab
+            let defaultOs = "linux"; // default fallback
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            
+            if (userAgent.indexOf("win") !== -1) {
+                defaultOs = "windows";
+            } else if (userAgent.indexOf("mac") !== -1) {
+                defaultOs = "macos";
+            }
+            
+            const initialTab = document.querySelector(`.os-tab-btn[data-target="${defaultOs}"]`);
             if(initialTab) {
-                initialTab.setAttribute('data-state', 'active');
-                initialTab.classList.remove('text-on-surface-variant');
-                initialTab.classList.add('text-primary');
+                initialTab.click();
             }
         });
     </script>
